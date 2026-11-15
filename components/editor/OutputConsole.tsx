@@ -95,7 +95,7 @@ export function OutputConsole({
             }`}
           >
             <FileCode2 className="w-3.5 h-3.5" />
-            <span>Ruff / Clippy</span>
+            <span>Code Quality</span>
             {hasRun && (
               <span
                 className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
@@ -163,7 +163,7 @@ export function OutputConsole({
       >
         {/* Error Callout Banner */}
         {error && (
-          <div className="mb-4 rounded-xl bg-rose-950/40 border border-rose-500/40 p-3 text-rose-200">
+          <div className="mb-3 rounded-xl bg-rose-950/35 border border-rose-500/30 p-3 text-rose-200">
             <div className="flex items-start gap-2.5">
               <AlertCircle className="w-4 h-4 text-rose-400 mt-0.5 flex-shrink-0" />
               <div>
@@ -173,29 +173,6 @@ export function OutputConsole({
                 </div>
                 <div className="text-rose-200/90 mt-1 whitespace-pre-wrap">{error}</div>
               </div>
-            </div>
-          </div>
-        )}
-
-        {/* Option A: Native Rust WASM Stress Benchmark Telemetry Strip */}
-        {hasRun && wasmBenchmark && (
-          <div className="mb-3 rounded-xl bg-orange-950/20 border border-orange-500/25 px-3 py-2 flex flex-wrap items-center justify-between gap-2 text-[11px]">
-            <div className="flex items-center gap-2 text-orange-200">
-              <span className="px-1.5 py-0.5 rounded bg-orange-500/20 text-orange-300 border border-orange-500/30 font-bold text-[10px]">
-                🦀 RUST WASM CORE ({wasmBenchmark.wasmBinarySizeKb}KB)
-              </span>
-              <span className="text-slate-300">{wasmBenchmark.operationName}</span>
-            </div>
-            <div className="flex items-center gap-3 text-slate-400">
-              <span>
-                Time: <strong className="text-orange-300">{wasmBenchmark.executionTimeUs}µs</strong>
-              </span>
-              <span>
-                Throughput:{' '}
-                <strong className="text-emerald-300">
-                  {(wasmBenchmark.opsPerSecond / 1_000_000).toFixed(1)}M ops/s
-                </strong>
-              </span>
             </div>
           </div>
         )}

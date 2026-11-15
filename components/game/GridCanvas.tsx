@@ -49,7 +49,7 @@ export const GridCanvas = React.memo(function GridCanvas({
   }, [tiles, width, height])
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl bg-slate-950/90 border border-white/[0.08] p-5 shadow-2xl flex flex-col items-center justify-center select-none">
+    <div className="relative w-full overflow-hidden rounded-2xl bg-slate-950/90 border border-white/[0.08] px-5 pt-9 pb-4 shadow-xl flex flex-col items-center justify-center select-none">
       {/* Background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[320px] bg-indigo-500/10 rounded-full blur-[100px]" />
@@ -262,7 +262,7 @@ export const GridCanvas = React.memo(function GridCanvas({
 
         {/* Animated Hero Avatar */}
         <motion.div
-          className="absolute z-20 pointer-events-none"
+          className="absolute top-0 left-0 z-20 pointer-events-none"
           animate={{
             x: heroPosition.x * TILE_SIZE + 6,
             y: heroPosition.y * TILE_SIZE + 6,

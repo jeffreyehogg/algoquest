@@ -72,7 +72,7 @@ export function RunControls({
         <button
           type="button"
           onClick={onTogglePlay}
-          className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-bold transition-all shadow-[0_0_12px_rgba(99,102,241,0.4)] flex items-center gap-1.5 active:scale-[0.98]"
+          className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-mono text-xs font-bold transition-colors flex items-center gap-1.5 active:scale-[0.98]"
         >
           {isPlaying ? (
             <>

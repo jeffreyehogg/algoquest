@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   Star,
   ArrowRight,
-  Flame,
   Code2,
   Compass,
   Play,
@@ -28,7 +27,6 @@ export default function HomePage() {
     unlockedLevels,
     completedLevels,
     totalXp,
-    streakDays,
     unlockAllLevels,
   } = useGameStore()
 
@@ -110,7 +108,7 @@ export default function HomePage() {
           >
             <Link
               href={`/play/${nextPlayableLevel.id}`}
-              className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold font-mono text-base transition-all shadow-[0_0_30px_rgba(16,185,129,0.35)] flex items-center justify-center gap-2.5 active:scale-[0.98] group"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold font-mono text-sm sm:text-base transition-colors shadow-lg shadow-emerald-500/15 flex items-center justify-center gap-2.5 active:scale-[0.98] group"
             >
               <Play className="w-5 h-5 fill-current" />
               <span>
@@ -128,31 +126,18 @@ export default function HomePage() {
         </div>
 
         {/* Progress Strip */}
-        <div className="w-full p-4 rounded-2xl bg-slate-900/60 border border-white/[0.08] backdrop-blur-xl mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
-          <div className="flex-1">
-            <div className="flex items-center justify-between text-xs font-mono mb-2">
-              <span className="text-slate-300 font-semibold">Your Progress</span>
-              <span className="text-emerald-400 font-bold">
-                {completedCount} of {totalLevelsCount} Completed ({progressPercent}%)
-              </span>
-            </div>
-            <div className="w-full h-2 rounded-full bg-slate-950 border border-white/[0.06] overflow-hidden">
-              <div
-                className="h-full bg-emerald-500 rounded-full transition-all duration-500"
-                style={{ width: `${Math.max(progressPercent, 4)}%` }}
-              />
-            </div>
+        <div className="w-full p-4 rounded-2xl bg-slate-900/60 border border-white/[0.08] backdrop-blur-xl mb-8">
+          <div className="flex items-center justify-between text-xs font-mono mb-2">
+            <span className="text-slate-300 font-semibold">Your Progress</span>
+            <span className="text-emerald-400 font-bold">
+              {completedCount} of {totalLevelsCount} Completed ({progressPercent}%)
+            </span>
           </div>
-
-          <div className="flex items-center gap-2.5 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-white/[0.06]">
-            <div className="px-3 py-1.5 rounded-xl bg-slate-950/80 border border-white/[0.06] text-xs font-mono text-amber-300 font-bold flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>{hasHydrated ? totalXp : 0} XP</span>
-            </div>
-            <div className="px-3 py-1.5 rounded-xl bg-slate-950/80 border border-white/[0.06] text-xs font-mono text-orange-400 font-bold flex items-center gap-1.5">
-              <Flame className="w-3.5 h-3.5 fill-orange-400" />
-              <span>{hasHydrated ? streakDays : 1}d Streak</span>
-            </div>
+          <div className="w-full h-2 rounded-full bg-slate-950 border border-white/[0.06] overflow-hidden">
+            <div
+              className="h-full bg-emerald-500 rounded-full transition-all duration-500"
+              style={{ width: `${Math.max(progressPercent, 4)}%` }}
+            />
           </div>
         </div>
 
@@ -229,13 +214,13 @@ export default function HomePage() {
                     return (
                       <div
                         key={lvl.id}
-                        className={`w-full p-4 rounded-2xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+                        className={`w-full p-4 rounded-2xl border transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
                           isNextUp
-                            ? 'bg-slate-900/95 border-emerald-500/60 shadow-[0_0_25px_rgba(16,185,129,0.2)] ring-1 ring-emerald-500/40'
+                            ? 'bg-slate-900/90 border-emerald-500/50'
                             : isCompleted
-                              ? 'bg-slate-900/70 border-emerald-500/25 hover:border-emerald-500/40'
+                              ? 'bg-slate-900/60 border-white/[0.07] hover:border-emerald-500/35'
                               : isUnlocked
-                                ? 'bg-slate-900/70 border-white/[0.08] hover:border-cyan-500/40'
+                                ? 'bg-slate-900/60 border-white/[0.07] hover:border-cyan-500/35'
                                 : 'bg-slate-950/40 border-white/[0.04] opacity-50'
                         }`}
                       >
@@ -243,15 +228,15 @@ export default function HomePage() {
                         <div className="flex items-start sm:items-center gap-3.5 flex-1 min-w-0">
                           <div className="mt-0.5 sm:mt-0 shrink-0">
                             {isCompleted ? (
-                              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-sm">
+                              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400">
                                 <CheckCircle2 className="w-5 h-5" />
                               </div>
                             ) : isNextUp ? (
-                              <div className="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.3)] animate-pulse">
+                              <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-300">
                                 <Play className="w-4 h-4 fill-current ml-0.5" />
                               </div>
                             ) : isUnlocked ? (
-                              <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                              <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center text-cyan-400">
                                 <Play className="w-4 h-4 fill-current ml-0.5" />
                               </div>
                             ) : (
@@ -262,16 +247,16 @@ export default function HomePage() {
                           </div>
 
                           <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-2 flex-wrap mb-1">
-                              <span className="text-xs font-mono font-bold text-slate-400">
+                            <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                              <span className="text-xs font-mono font-semibold text-slate-400">
                                 Level {lvl.number}
                               </span>
-                              <span className="text-slate-600 font-mono">•</span>
-                              <span className="text-xs font-mono font-medium px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-white/[0.06]">
+                              <span className="text-slate-600 font-mono">·</span>
+                              <span className="text-xs font-mono text-slate-400">
                                 {lvl.concept}
                               </span>
                               {isNextUp && (
-                                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
                                   NEXT UP
                                 </span>
                               )}

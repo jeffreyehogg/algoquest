@@ -23,14 +23,11 @@ export function UserProfileBadge() {
         <SignInButton mode="modal">
           <button
             type="button"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/[0.08] text-xs font-mono transition-all active:scale-[0.98]"
-            title="Guest Mode (Saved in LocalStorage) - Sign in to sync to cloud"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/[0.06] text-xs font-mono transition-colors active:scale-[0.98]"
+            title="Guest Mode (Saved locally) — Sign in to sync to cloud"
           >
             <User className="w-3.5 h-3.5 text-slate-400" />
-            <span className="hidden sm:inline">Guest</span>
-            <span className="text-[10px] text-indigo-400 font-semibold bg-indigo-500/10 px-1 rounded border border-indigo-500/20">
-              Sync
-            </span>
+            <span className="hidden sm:inline">Sign in</span>
           </button>
         </SignInButton>
       </div>

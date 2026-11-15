@@ -29,8 +29,8 @@ export function Visualizer({
   const activeMap = liveMap && Object.keys(liveMap).length > 0 ? liveMap : initialMap
 
   return (
-    <div className="w-full rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/[0.08] p-4 mt-3 shadow-xl">
-      <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
+    <div className="w-full rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-white/[0.08] p-4 mt-3 shadow-lg">
+      <div className="flex items-center justify-between pb-2.5 mb-3 border-b border-white/[0.06]">
         <div className="flex items-center gap-2">
           {type === 'stack' ? (
             <Layers className="w-4 h-4 text-indigo-400" />
@@ -55,9 +55,6 @@ export function Visualizer({
                     : '0-Indexed Array Memory'}
           </span>
         </div>
-        <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700 font-mono">
-          Live Telemetry
-        </span>
       </div>
 
       {/* Mode 1: Stack Tower (Level 7) */}
